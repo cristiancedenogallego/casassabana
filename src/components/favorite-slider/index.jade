@@ -1,0 +1,14 @@
+- var host_photos = '//photos.verinmuebles.com/';
+#carousel-favorite.carousel.slide
+	button.btn.btn-primary.FavoriteSlider-publishButton Publique su inmueble
+	ol.carousel-indicators
+	.carousel-inner
+		each code, index in codes
+			-var _class = (index === 0) ? 'active' : ''; 
+			.item(class=_class)
+				img.FavoriteSlider-photo(src=host_photos + code.bDetails[0].bInImages[0].image, alt='Second slide')
+	if codes.length > 1
+		a.left.carousel-control(href='#carousel-favorite', data-slide='prev')
+			span.icon-prev
+		a.right.carousel-control(href='#carousel-favorite', data-slide='next')
+			span.icon-next

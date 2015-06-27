@@ -1,0 +1,5 @@
+# Build desarrollo
+build/*
+# Node modules
+node_modules/*
+prepros.cfg

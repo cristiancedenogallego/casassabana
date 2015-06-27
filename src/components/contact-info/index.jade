@@ -1,0 +1,12 @@
+h4 Casas en la sabana
+.ContactInfo
+	if email
+		.ContactInfo-email Correo: #{email}
+	if phones
+		.ContactInfo-phone Telefonos: #{phones}
+	if address
+		.ContactInfo-adress Dirección: #{address}
+	if hourary
+		.ContactInfo-workingHours Horario: #{hourary}
+	if country && city
+		.ContactInfo-location #{city}, #{country}

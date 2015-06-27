@@ -1,0 +1,18 @@
+
+form(action='http://www.verinmuebles.com/pagewidget/sendemail', method='POST', role='form', id="form-contact")
+	.ContactForm-legend Contacto y Sugerencias
+	.form-group
+		.col-md-2.col-xs-12: label(for='name') Nombre:
+		.col-md-10.col-xs-12: input.form-control(type='text', name="name")
+	.form-group
+		.col-md-2.col-xs-12: label(for='phone') Teléfono:
+		.col-md-10.col-xs-12: input.form-control(type='text', name="phone")
+	.form-group
+		.col-md-2.col-xs-12: label(for='email') E-mail:
+		.col-md-10.col-xs-12: input.form-control(type='text', name="email")
+	.form-group
+		.col-md-2.col-xs-12: label(for='name') Mensaje:
+		.col-md-10.col-xs-12: textarea.form-control.no-resize(type='text', name="msg", rows="5")
+	.form-group
+		.col-xs-12
+			button.btn.btn-primary.ContactForm-btnSubmit.pull-right(type='submit') Enviar mensaje

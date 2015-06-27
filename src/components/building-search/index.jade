@@ -1,0 +1,5 @@
+form#search-form.form-inline.BuildingSearch.container-fluid(action='/busqueda', method='POST', role='form')
+	.col-md-4: label(for='').BuildingSearch-label Búsqueda por código o palabras:
+	.col-md-6: input#querySearch.form-control.BuildingSearch-query(placeholder='Características o código')
+	.col-md-2: button#button-search.btn.btn-primary.BuildingSearch-button(type='submit')
+		i.fa.fa-search: span  Buscar

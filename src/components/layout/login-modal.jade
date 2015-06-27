@@ -1,0 +1,28 @@
+#login-modal.modal.fade
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button.close(type='button', data-dismiss='modal')
+					span(aria-hidden='true') &times;
+					span(sr-only) Cerrar
+				h4.modal-title Inicio de sesión
+			.modal-body
+				form(id="login-form", action="http://www.verinmuebles.com/portal/sesion", method="post",target="_blank", role='form')
+					legend Ingreso a Verinmuebles
+					.form-group
+						label(for="LoginForm_username") Usuario/Email:
+						input.form-control(name="LoginForm[username]", id="LoginForm_username")
+						.errorMessage_login(id="LoginForm_username_em_", style="display:none")
+					.form-group
+						label(for="LoginForm_password") Contraseña:
+						input.form-control(name="LoginForm[password]", id="LoginForm_password", type="password")
+						.errorMessage_login(id="LoginForm_password_em_",style="display: none;")
+					.form-group
+						input(id="ytLoginForm_rememberMe", type="hidden", value="0", name="LoginForm[rememberMe]") 
+						input(name="LoginForm[rememberMe]", id="LoginForm_rememberMe", value="1", type="checkbox") 
+						label(for="LoginForm_rememberMe") Mantener la sesión iniciada
+						.errorMessage(id="LoginForm_rememberMe_em_" style="display:none")
+			.modal-footer
+				button.btn.btn-default(type='button', data-dismiss='modal') Cerrar
+				button#login-modal-submit.btn.btn-primary(type='button') Ingresar
+				

@@ -1,0 +1,31 @@
+- var maxpages = Math.floor(count / 15)
+.ResultsItem-container
+	each detail in model
+		- var hostImages = "//photos.verinmuebles.com/th/"
+		- var mainPhoto = detail.bInImages[0];
+		- var code = detail.bCodes;
+		- var labels = detail.bInLabels;
+		- var mainPhotoDescription = (!!detail.bInImages[0].description) ? detail.bInImages[0].description : '';
+		- var price = '$ '+detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+		- var labelStyle = (!!labels[0] && !!labels[0].label_color) ? `background: ${labels[0].label_color}` : ''
+
+		article.ResultsItem.col-md-4
+			a(href="http://#{detail.permalink}", target="_blank").ResultsItem-link
+				figure
+					img(src="#{hostImages}#{mainPhoto.image}", alt="#{mainPhotoDescription}").ResultsItem-image
+					if labels.length > 0
+						.ResultsItem-ribbon(style=labelStyle) #{labels[0].label.name}
+				.ResultsItem-offerInfo.col-xs-12
+					.ResultsItem-kindOffer #{detail.kindOffer.offer_reference_res}
+					.ResultsItem-kindBuilding #{detail.kindBuilding.building_name}
+					.ResultsItem-sector #{detail.sector0.sector_name}
+					.ResultsItem-city #{detail.city0.CityName}
+					.ResultsItem-price #{price}
+					.ResultsItem-cod
+						.ResultsItem-codLabel Código
+						.ResultsItem-codNum #{code.building_code}
+	if maxpages > 0 && actualPage < maxpages
+		#resultsItem-loadMore
+			button.btn-primary.ResultsItem-button(data-page=actualPage, data-max=maxpages)
+				span Cargar más 
+				i.fa.fa-plus

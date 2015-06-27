@@ -1,0 +1,43 @@
+doctype html
+html(lang="es")
+	head
+		link(rel="stylesheet" href="/styles/main.css")
+		link(href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css')
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(charset="UTF-8")
+		link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+	body
+		.container-fluid.Layout
+			.Layout-topBar
+				.Layout-socialIcons
+					a#facebook.Layout-socialIcon(href="http://", target="_blank")
+					a#twitter.Layout-socialIcon(href="http://", target="_blank")
+					a#gplus.Layout-socialIcon(href="http://", target="_blank")
+					a#youtube.Layout-socialIcon(href="http://", target="_blank")
+					a#linkedin.Layout-socialIcon(href="http://", target="_blank")
+				.Layout-topBanner
+					a#topBanner(href="/")
+						img#topBannerImg(src="/images/logo.png")
+			nav(role="navigation").navbar.navbar-default
+				.collapse.navbar-collapse.navbar-ex1-collapse
+					ul.nav.navbar-nav.navbar-right
+						each val, index in {'/':'Inicio','/quienes-somos':'Quienes somos', '/condominios':'Condominios','/fincas':'Fincas','/oficinas':'Oficinas', '/venta':'Venta', '/arriendo':'Arriendo', '/contacto':'Contacto'}
+							li: a(href=index) #{val}
+						li: a(href="#", data-toggle="modal", data-target="#login-modal"): i.fa.fa-lock
+			.col-md-3.col-xs-12
+				// Aqui barra lateral
+				.SideBar
+			.col-md-9.col-xs-12#root-container
+				block content
+		footer.Layout-footer.container-fluid
+			.col-md-6.col-xs-12
+				include ../contact-form/index
+			.col-md-6.col-xs-12
+				#contact-info
+			.powered
+				.col-md-6.col-xs-12
+					#copyright
+				.col-md-6.col-xs-12
+					#verinmuebles
+		include login-modal
+		script(src="/scripts/ix.js")

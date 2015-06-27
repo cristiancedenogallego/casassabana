@@ -1,0 +1,5 @@
+.Condominiums
+	.Condominiums-title #{title}
+	ul.Condominiums-elements
+		each elem in elements
+			li.Condominiums-elem: a(href=elem.link, target="_blank") #{elem.title}

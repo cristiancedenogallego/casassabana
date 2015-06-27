@@ -1,0 +1,84 @@
+customTransition()
+	-webkit-transition: all 600ms cubic-bezier(0.250, 0.100, 1.000, 0)
+	-webkit-transition: all 600ms cubic-bezier(0.250, 0.100, 1.000, -0.030)
+	-moz-transition: all 600ms cubic-bezier(0.250, 0.100, 1.000, -0.030)
+	-o-transition: all 600ms cubic-bezier(0.250, 0.100, 1.000, -0.030)
+	transition: all 600ms cubic-bezier(0.250, 0.100, 1.000, -0.030)
+	-webkit-transition-timing-function: cubic-bezier(0.250, 0.100, 1.000, 0)
+	-webkit-transition-timing-function: cubic-bezier(0.250, 0.100, 1.000, -0.030)
+	-moz-transition-timing-function: cubic-bezier(0.250, 0.100, 1.000, -0.030)
+	-o-transition-timing-function: cubic-bezier(0.250, 0.100, 1.000, -0.030)
+	transition-timing-function: cubic-bezier(0.250, 0.100, 1.000, -0.030)
+
+grayscalemix(percent)
+	filter: gray;
+	-webkit-filter: grayscale(percent);
+	-moz-filter: grayscale(percent);
+	-ms-filter: grayscale(percent);
+	-o-filter: grayscale(percent);
+	filter: grayscale(percent);
+	customTransition
+#resultsItem-loadMore
+	text-align center
+.ResultsItem
+	position relative
+	margin-bottom 30px
+	&-container
+		margin 2em 0
+	&-ribbon
+		background color_base
+		position absolute
+		top: 0.5em;
+		text-align center
+		color white
+		padding 0.5em
+		width: 80%;
+		left 10%
+	&-image
+		width: 100%
+		filter: gray;
+		grayscalemix 100%
+		customTransition
+		height 332px
+		&:hover
+			grayscalemix 0%
+	&-link
+		color black
+		position relative
+		width 100%
+		display inline-block
+		customTransition
+		&:hover
+			text-decoration none
+			color black
+		&:hover > .ResultsItem-offerInfo
+			height 0
+			padding 0
+	&-offerInfo
+		position: absolute;
+		bottom: 0;
+		color: white;
+		background rgba(0,0,0,0.7)
+		width 100%
+		padding 1em 1em
+		customTransition
+		height auto
+	  	overflow: hidden;
+	  	font-size 12px
+	&-cod
+		  position: absolute;
+		  right: 1em;
+		  text-align: center;
+		  bottom: 1em;
+	&-codNum
+		font-weight: bold;
+		font-size: 20px;
+		background: rgba(255,255,255,0.1);
+	&-button
+		display inline-block
+		width 50%
+		padding 0.5em 0
+		background transparent
+		color color_base
+		border 1px solid color_base
+	  	font-size: 18px;

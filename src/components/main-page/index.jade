@@ -1,0 +1,17 @@
+if showSearch === true
+	.row
+		include ../building-search/index.jade
+#main-content
+	if showFavSlider === true
+		.row
+			.FavoriteSlider
+	if showServices === true
+		.row
+			.container.Services
+				.row
+					h3.title.text-color-base Ofrecemos
+				.col-md-9
+					each service in ["Asesoria Profesional", "Acompañamiento legal y comercial", "Fotografia Profesional", "15 años de experiencia"]
+							.col-md-6.Services-item
+								i.fa.fa-check-square-o
+								span #{service}
