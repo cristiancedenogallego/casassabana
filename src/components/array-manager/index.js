@@ -4,10 +4,8 @@ class ArrayManager{
   **/
  removeEmptys( arrayElements ){
     $.each(arrayElements, (index, elem) =>{
-
        if(!!!elem && elem !== false){
           arrayElements.splice( index , 1 );
-
        }
     });
     return arrayElements;

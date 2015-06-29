@@ -1,12 +1,20 @@
 h4 Casas en la sabana
 .ContactInfo
 	if email
-		.ContactInfo-email Correo: #{email}
+		.ContactInfo-email
+			i.fa.fa-envelope: span Correo
+			span #{email}
 	if phones
-		.ContactInfo-phone Telefonos: #{phones}
+		.ContactInfo-phone
+			i.fa.fa-phone: span Teléfonos 
+			span #{phones}
 	if address
-		.ContactInfo-adress Dirección: #{address}
+		.ContactInfo-address
+			i.fa.fa-globe: span Dirección
+			span #{address}
 	if hourary
-		.ContactInfo-workingHours Horario: #{hourary}
+		i.fa.fa-clock-o
+		span Horario: #{hourary}
 	if country && city
-		.ContactInfo-location #{city}, #{country}
+		i.fa.fa-location-arrow
+		span #{city}, #{country}
