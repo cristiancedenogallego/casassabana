@@ -1,0 +1,102 @@
+#################################################
+
+########     API - Verinmuebles.com	     ########
+
+########  Configuración de HTTPD Apache  ########
+
+#################################################
+
+#
+
+#  El uso de esta libreria indica la aceptación
+
+#  de los términos y condiciones establecidos
+
+#  en Verinmuebles.com.
+
+#
+
+#  Prohibido utilizar este sistema fuera del
+
+#  dominio contratado.
+
+#
+
+#  Copyright - Verinmuebles.com © 2014
+
+#
+
+#################################################
+
+
+
+<FilesMatch ".(ttf|otf|eot|woff)$">
+
+<IfModule mod_headers.c>
+
+Header set Access-Control-Allow-Origin "*"
+
+</IfModule>
+
+</FilesMatch>
+
+
+
+Header add Access-Control-Allow-Origin "*"
+
+
+
+RewriteEngine on
+
+
+
+# SEO-based
+
+RewriteCond %{REQUEST_URI} !/suspendido.html$
+
+RewriteCond %{REQUEST_URI} !/index.php$
+
+RewriteCond %{REQUEST_URI} !/404.html$
+
+RewriteCond %{REQUEST_URI} !/webmail.html$
+
+RewriteCond %{REQUEST_URI} !/sections/.*\.html$
+
+RewriteRule ^.*\.html$ details.php?id=1
+
+RewriteRule [0-9]$ details.html?id=1
+
+RewriteRule venta$ index.php?v=s
+
+RewriteRule arriendo$ index.php?v=r
+
+RewriteRule turismo$ index.php?v=t
+
+RewriteRule inversion$ index.php?v=inv
+
+RewriteRule condominio\/.*$ index.php?v=inv
+
+RewriteRule quienes-somos$ index.php?v=inv
+
+RewriteRule condominios$ index.php?v=inv
+
+RewriteRule contacto$ index.php?v=inv
+
+RewriteRule correo$ webmail.html?c=m
+
+RewriteRule seccion-([a-z0-9\-]+) index.php?v=inv
+
+
+
+
+
+# Error codes
+
+ErrorDocument 404 /404.html
+
+ErrorDocument 500 /500.html
+
+
+
+
+
