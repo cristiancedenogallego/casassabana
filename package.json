@@ -25,7 +25,7 @@
     "jadeify": "^4.3.0",
     "nib": "^1.1.0",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
     "browser-sync": "^2.7.13",
     "connect-livereload": "^0.5.3",
     "escape-html": "^1.0.2",
