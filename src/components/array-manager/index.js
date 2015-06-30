@@ -7,7 +7,6 @@ class ArrayManager{
 
        if(!!!elem && elem !== false){
           arrayElements.splice( index , 1 );
-
        }
     });
     return arrayElements;
