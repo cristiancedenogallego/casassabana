@@ -56,7 +56,7 @@ class Routes{
 			})
 
 			page('/contacto', function(){
-				$('#root-container').html( require('../contact-form/index.jade')() );
+				$('#root-container').html( require('../contact-form/index.jade')({_class: 'ContactForm--fullpage'}) );
 				require('../contact-form/index.js');
 			})
 

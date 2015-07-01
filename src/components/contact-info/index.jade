@@ -1,20 +1,25 @@
-h4 Casas en la sabana
+.ContactForm-legend Casas en la sabana
 .ContactInfo
 	if email
-		.ContactInfo-email
-			i.fa.fa-envelope: span Correo
+		.ContactInfo-item.col-lg-12
+			i.fa.fa-envelope
+			span Correo: 
 			span #{email}
 	if phones
-		.ContactInfo-phone
-			i.fa.fa-phone: span Teléfonos 
+		.ContactInfo-item.col-lg-12
+			i.fa.fa-phone
+			span Teléfonos: 
 			span #{phones}
 	if address
-		.ContactInfo-address
-			i.fa.fa-globe: span Dirección
+		.ContactInfo-item.col-lg-12
+			i.fa.fa-globe
+			span Dirección: 
 			span #{address}
 	if hourary
-		i.fa.fa-clock-o
-		span Horario: #{hourary}
+		.ContactInfo-item.col-lg-12
+			i.fa.fa-clock-o
+			span Horario: #{hourary}
 	if country && city
-		i.fa.fa-location-arrow
-		span #{city}, #{country}
+		.ContactInfo-item.col-lg-12
+			i.fa.fa-location-arrow
+			span #{city}, #{country}

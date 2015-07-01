@@ -70,6 +70,10 @@ RewriteRule venta$ index.php?v=s
 
 RewriteRule arriendo$ index.php?v=r
 
+RewriteRule fincas$ index.php
+
+RewriteRule oficinas$ index.php
+
 RewriteRule turismo$ index.php?v=t
 
 RewriteRule inversion$ index.php?v=inv
@@ -95,8 +99,3 @@ RewriteRule seccion-([a-z0-9\-]+) index.php?v=inv
 ErrorDocument 404 /404.html
 
 ErrorDocument 500 /500.html
-
-
-
-
-
