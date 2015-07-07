@@ -15,13 +15,12 @@ class ContactInfo{
 		jsonMan.getContent('/config/clients_inf.json').then( ( clients_inf ) => {
 			let arrMan = require('../array-manager/index.js');
 			let phones = arrMan.joinArray( [clients_inf.phone1, clients_inf.phone] );
-			console.log(phones);
 			let html = require('../contact-info/index.jade')({
 				address: clients_inf.address,
 				phones: phones,
 				workinghours: clients_inf.hourary,
 				country: clients_inf.country_name,
-				city: clients_inf.city,
+				city: "Chia",
 				email: clients_inf.email1
 			});
 

@@ -4,9 +4,9 @@ var JSONmanager = require('../JSON-manager/index.js')
 
 class BuildingSearch{
 	constructor(){
-		$('#search-form').on('submit', (event) => {
-			this.page = 0;
+		$(document).on('submit','#search-form', (event) => {
 			event.preventDefault();
+			this.page = 0;
 			let filters = new Array();
 			let query = $('#querySearch').val();
 			if(query !== ''){

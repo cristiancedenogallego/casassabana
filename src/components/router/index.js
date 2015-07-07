@@ -1,5 +1,9 @@
 var page = require('page');
 var results_search = require('../building-search/index.js');
+var detail = require('../building-detail/index.js');
+var jsonMan = require('../JSON-manager/index.js')
+import BuildingConsign from '../building-consign/index.js';
+import Favoriteslider from "../favorite-slider/index.js"
 
 class Routes{
 	navigateTo(route){
@@ -22,8 +26,7 @@ class Routes{
 					showFavSlider: true,
 					showServices: true
 				});
-				let fav = require("../favorite-slider/index.js")
-				fav.render()
+				new Favoriteslider();
 			});
 			// Propiedades en venta
 			page('/venta', function(){
@@ -45,9 +48,32 @@ class Routes{
 				let filters = new Array('kindoffer=1');
 				results_search.search(filters)
 			})
-
+			// Propiedades en venta
+			page('/fincas', function(){
+				self.defaultPage({
+					showSearch: true,
+					showFavSlider: false,
+					showServices: false
+				});
+				let filters = new Array('kindbuilding=11');
+				results_search.search(filters)
+			})
+			// Propiedades en venta
+			page('/oficinas', function(){
+				self.defaultPage({
+					showSearch: true,
+					showFavSlider: false,
+					showServices: false
+				});
+				let filters = new Array('kindbuilding=3');
+				results_search.search(filters)
+			})
 			page('/quienes-somos', function(){
 				$('#root-container').html( require('../quienes-somos/index.jade')() );
+			})
+
+			page('/consigne-su-inmueble', function(){
+				let b = new BuildingConsign();
 			})
 
 			page('/condominios', function(){
@@ -65,11 +91,24 @@ class Routes{
 				let path = ctx.path;
 				condominiums.getCondominiums().done( (data) => {
 					$.each(data, (index, c) => {
-						if(path === c.link){
+						if(decodeURIComponent(path) === c.link){
 							condominiums.renderDetail(undefined, c);
 							results_search.search( [`codes=${c.codes}`, `page=0`], '.Condominiums-buildings' );
 						}
 					});
+				});
+			});
+
+			page('/administrador', function(ctx){
+				let Admin = require('../admin/index.js');
+				let a  = new Admin();
+			});
+
+			page('/:permalink', function(ctx){
+				let codeMatch = ctx.params.permalink.match( new RegExp('([0-9]*)(\.html)') );
+				let code = codeMatch[1];
+				jsonMan.getContent('/config/clients_inf.json').then( ( clients_inf ) => {
+					let d = new detail(code, clients_inf.clients_id);
 				});
 			});
 

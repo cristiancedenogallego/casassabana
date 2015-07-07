@@ -1,17 +1,25 @@
+- var form_options = (typeof form_options !== 'undefined') ? form_options : {};
+- var labels = {name:"Nombre", phone: "Teléfono", email: "E-mail", msg: "Mensaje"}
+
 form(action='http://www.verinmuebles.com/pagewidget/sendemail', method='POST', role='form', id="form-contact", class=_class)
-	.ContactForm-legend Contacto y Sugerencias
+	if !form_options.hidde_lengend
+		.ContactForm-legend Contacto y Sugerencias
 	.form-group
-		.col-md-2.col-xs-12: label(for='name') Nombre:
-		.col-md-10.col-xs-12: input.form-control(type='text', name="name")
+		if(!form_options.no_label)
+			.col-md-2.col-xs-12: label(for='name') #{labels.name}:
+		.col-md-10.col-xs-12.ContactForm-input: input.form-control(type='text', name="name", placeholder=form_options.placeholder ? labels.name : '')
 	.form-group
-		.col-md-2.col-xs-12: label(for='phone') Teléfono:
-		.col-md-10.col-xs-12: input.form-control(type='text', name="phone")
+		if(!form_options.no_label)
+			.col-md-2.col-xs-12: label(for='phone') #{labels.phone}:
+		.col-md-10.col-xs-12.ContactForm-input: input.form-control(type='text', name="phone", placeholder=form_options.placeholder ? labels.phone : '')
 	.form-group
-		.col-md-2.col-xs-12: label(for='email') E-mail:
-		.col-md-10.col-xs-12: input.form-control(type='text', name="email")
+		if(!form_options.no_label)
+			.col-md-2.col-xs-12: label(for='email') #{labels.email}:
+		.col-md-10.col-xs-12.ContactForm-input: input.form-control(type='text', name="email", placeholder=form_options.placeholder ? labels.email : '')
 	.form-group
-		.col-md-2.col-xs-12: label(for='name') Mensaje:
-		.col-md-10.col-xs-12: textarea.form-control.no-resize(type='text', name="msg", rows="5")
+		if(!form_options.no_label)
+			.col-md-2.col-xs-12: label(for='name') #{labels.msg}:
+		.col-md-10.col-xs-12.ContactForm-input: textarea.form-control.no-resize(type='text', name="msg", rows="5", placeholder=form_options.placeholder ? labels.msg : '')
 	.form-group
 		.col-xs-12
 			button.btn.btn-primary.ContactForm-btnSubmit.pull-right(type='submit') Enviar mensaje

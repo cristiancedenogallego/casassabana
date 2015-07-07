@@ -1,15 +1,21 @@
-h2.QuienesSomos-title Quienes somos
-.QuienesSomos-primary
-	img.QuienesSomos-image(src="images/lanival.jpeg", alt="")
+.QuienesSomos
+	h2.QuienesSomos-title Quienes somos
+	.QuienesSomos-primary
+		img.QuienesSomos-image(src="images/lanival.jpeg", alt="")
+		p.
+			Luis Aníbal Vargas Z., de profesión Administrador de Empresas de la Universidad Externado de Colombia, con Diplomado en Avalúos y Diplomado en Gestión Inmobiliaria de la Pontificia Universidad Javeriana con la Lonja de Bogotá. Cuenta con 14 años de experiencia en el corretaje inmobiliario. Inicia presencia en la Sabana Norte de Bogotá en el año 2.009 en Condominios exclusivos como Hacienda Fontanar, entre otros, por solicitud de clientes antiguos satisfechos con su servicio del norte de Bogotá D.C. 
+			Presta sus servicios periódicamente a locales y extranjeros, incrementando día a día su cartera de clientes 100% satisfechos que solicitan nuevamente su gestión profesional y quienes refieren espontáneamente a sus allegados y familiares
+	h2.QuienesSomos-title Misión
 	p.
-		Luis Aníbal Vargas Z., de profesión Administrador de Empresas de la Universidad Externado de Colombia, con Diplomado en Avalúos y Diplomado en Gestión Inmobiliaria de la Pontificia Universidad Javeriana con la Lonja de Bogotá. Cuenta con 14 años de experiencia en el corretaje inmobiliario. Inicia presencia en la Sabana Norte de Bogotá inicia en el año 2.009 en Condominios exclusivos como Hacienda Fontanar, entre otros, por solicitud de clientes antiguos satisfechos con su servicio del norte de Bogotá D.C. 
-		Presta sus servicios periódicamente a locales y extranjeros, incrementando día a día su cartera de clientes 100% satisfechos que solicitan nuevamente su gestión profesional y quienes refieren espontáneamente a sus allegados y familiares
-h2.QuienesSomos-title Mision
-p.
-	Ser una organización innovadora, efectiva y confiable que comercializa todo tipo de inmuebles como vivienda, lotes, fincas, oficinas, locales y demás. Impactando positivamente en el bienestar y mejoramiento de la calidad de vida de las familias y organizaciones.
-h2.QuienesSomos-title Vision
-p.
-	Liderar en la promoción de inmuebles para venta y renta en la Sabana de Bogotá, generando valor a sus clientes y colegas, de mayor preferencia en el medio a través de acciones encaminadas al resultado, a la confianza y al compromiso.
-h2.QuienesSomos-title Valores
-p.
-	Respeto, Etica profesional, Equidad, Colaboración, Pasión, Calidad y Diversidad.
+		Ser una organización innovadora, efectiva y confiable que comercializa todo tipo de inmuebles como vivienda, lotes, fincas, oficinas, locales y demás. Impactando positivamente en el bienestar y mejoramiento de la calidad de vida de las familias y organizaciones.
+	h2.QuienesSomos-title Visión
+	p.
+		Liderar en la promoción de inmuebles para venta y renta en la Sabana de Bogotá, generando valor a sus clientes y colegas, de mayor preferencia en el medio a través de acciones encaminadas al resultado, a la confianza y al compromiso.
+
+	h2.QuienesSomos-title Referencias
+		span.small  (Haga click para ampliar)
+	a(href="/images/certificacion.jpg", target="_blank"): img.QuienesSomos-certif(src="images/certificacion.jpg", alt="Cerificacion")
+
+	h2.QuienesSomos-title Diplomas
+	each img_diploma in ['diploma1.jpg', 'diploma2.jpg', 'diploma3.jpg']
+		a(href="/images/#{img_diploma}"): img.QuienesSomos-diploma(src="/images/#{img_diploma}", alt="Diploma luis Anibal")

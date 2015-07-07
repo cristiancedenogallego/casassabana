@@ -2,14 +2,26 @@
 	background white
 	margin 2% 2% 0
 	padding 0.5em
-.Layout-footer
-	background color_base
-	color white
 	overflow hidden
-	margin 0 2% 2%
-	.form-group
+	&-footer
+		background color_base
+		color white
 		overflow hidden
-		margin-bottom 0.5rem
-.Layout-logo
-	width 300px
-	margin 15px 15px 30px
+		margin 0 2% 0
+		padding-bottom 1em
+		.form-group
+			overflow hidden
+			margin-bottom 0.5rem
+	&-logo
+		width 300px
+		margin 15px 15px 30px
+	&-values
+		background lighten(color_base, 10)
+		margin 0 2% 0
+		padding 1em 15px
+		color white
+	&-topBar
+		margin-bottom 0.5em
+		background: url("/images/chia.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;

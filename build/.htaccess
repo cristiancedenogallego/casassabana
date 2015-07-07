@@ -62,9 +62,9 @@ RewriteCond %{REQUEST_URI} !/webmail.html$
 
 RewriteCond %{REQUEST_URI} !/sections/.*\.html$
 
-RewriteRule ^.*\.html$ details.php?id=1
+RewriteRule ^.*\.html$ index.php?id=1
 
-RewriteRule [0-9]$ details.html?id=1
+RewriteRule [0-9]$ index.php?id=1
 
 RewriteRule venta$ index.php?v=s
 
@@ -78,6 +78,8 @@ RewriteRule turismo$ index.php?v=t
 
 RewriteRule inversion$ index.php?v=inv
 
+RewriteRule administrador$ index.php
+
 RewriteRule condominio\/.*$ index.php?v=inv
 
 RewriteRule quienes-somos$ index.php?v=inv
@@ -85,6 +87,7 @@ RewriteRule quienes-somos$ index.php?v=inv
 RewriteRule condominios$ index.php?v=inv
 
 RewriteRule contacto$ index.php?v=inv
+RewriteRule consigne-su-inmueble$ index.php?v=inv
 
 RewriteRule correo$ webmail.html?c=m
 

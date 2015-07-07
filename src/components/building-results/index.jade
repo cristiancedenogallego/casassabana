@@ -10,7 +10,7 @@
 		- var labelStyle = (!!labels[0] && !!labels[0].label_color) ? `background: ${labels[0].label_color}` : ''
 
 		article.ResultsItem.col-md-4
-			a(href="http://#{detail.permalink}", target="_blank").ResultsItem-link
+			a(href="/#{detail.permalink}-#{code.building_code}.html", target="_blank").ResultsItem-link
 				figure
 					img(src="#{hostImages}#{mainPhoto.image}", alt="#{mainPhotoDescription}").ResultsItem-image
 					if labels.length > 0
@@ -27,5 +27,5 @@
 	if maxpages > 0 && actualPage < maxpages
 		#resultsItem-loadMore
 			button.btn-primary.ResultsItem-button(data-page=actualPage, data-max=maxpages)
-				span Cargar más 
+				span Cargar más
 				i.fa.fa-plus

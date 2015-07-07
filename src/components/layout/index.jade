@@ -1,6 +1,23 @@
 doctype html
 html(lang="es")
 	head
+		link(rel='apple-touch-icon', sizes='57x57', href='/apple-icon-57x57.png')
+		link(rel='apple-touch-icon', sizes='60x60', href='/apple-icon-60x60.png')
+		link(rel='apple-touch-icon', sizes='72x72', href='/apple-icon-72x72.png')
+		link(rel='apple-touch-icon', sizes='76x76', href='/apple-icon-76x76.png')
+		link(rel='apple-touch-icon', sizes='114x114', href='/apple-icon-114x114.png')
+		link(rel='apple-touch-icon', sizes='120x120', href='/apple-icon-120x120.png')
+		link(rel='apple-touch-icon', sizes='144x144', href='/apple-icon-144x144.png')
+		link(rel='apple-touch-icon', sizes='152x152', href='/apple-icon-152x152.png')
+		link(rel='apple-touch-icon', sizes='180x180', href='/apple-icon-180x180.png')
+		link(rel='icon', type='image/png', sizes='192x192', href='/android-icon-192x192.png')
+		link(rel='icon', type='image/png', sizes='32x32', href='/favicon-32x32.png')
+		link(rel='icon', type='image/png', sizes='96x96', href='/favicon-96x96.png')
+		link(rel='icon', type='image/png', sizes='16x16', href='/favicon-16x16.png')
+		link(rel='manifest', href='/manifest.json')
+		meta(name='msapplication-TileColor', content='#ffffff')
+		meta(name='msapplication-TileImage', content='/ms-icon-144x144.png')
+		meta(name='theme-color', content='#ffffff')
 		link(rel="stylesheet" href="/styles/main.css")
 		link(href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css')
 		meta(name="viewport" content="width=device-width, initial-scale=1")
@@ -19,9 +36,16 @@ html(lang="es")
 					a#topBanner(href="/")
 						img#topBannerImg.Layout-logo(src="/images/logo.jpg")
 			nav(role="navigation").navbar.navbar-default
+				.navbar-header
+					button(type="button", data-toggle="collapse", data-target=".navbar-ex1-collapse").navbar-toggle.collapsed
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a(href="#" ).navbar-brand Casas en la sabana
 				.collapse.navbar-collapse.navbar-ex1-collapse
 					ul.nav.navbar-nav.navbar-right
-						each val, index in {'/':'Inicio','/quienes-somos':'Quienes somos', '/condominios':'Condominios','/fincas':'Fincas','/oficinas':'Oficinas', '/venta':'Venta', '/arriendo':'Arriendo', '/contacto':'Contacto'}
+						each val, index in {'/':'Inicio','/quienes-somos':'Quiénes somos', '/condominios':'Condominios','/fincas':'Fincas','/oficinas':'Oficinas', '/venta':'Venta', '/arriendo':'Arriendo', '/contacto':'Contacto'}
 							li: a(href=index) #{val}
 						li: a(href="#", data-toggle="modal", data-target="#login-modal"): i.fa.fa-lock
 			.col-md-3.col-xs-12
@@ -39,5 +63,7 @@ html(lang="es")
 					#copyright
 				.col-md-6.col-xs-12
 					#verinmuebles
+		p.clearfix.container-fluid.Layout-values.
+			Respeto, Etica profesional, Equidad, Colaboración, Pasión, Calidad y Diversidad.
 		include login-modal
 		script(src="/scripts/ix.js")

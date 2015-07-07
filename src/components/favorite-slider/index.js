@@ -1,18 +1,17 @@
 var $ = require('jquery');
 var JSONmanager = require('../JSON-manager/index.js')
 
-class FavoriteSlider{
+export default class FavoriteSlider{
 	constructor(){
 		let self = this;
 		JSONmanager.getContent('/config/clients_inf.json')
 			.then( (clients_inf) => {
-				self.cid = clients_inf.clients_id;
-				self.render();
+				global.cid = clients_inf.clients_id;
+				this.render();
 			});
 	}
 	render(){
-		let self = this;
-		$.getJSON(`http://www.verinmuebles.com/pagewidget/fo?id=${self.cid}`, (data) => {
+		$.getJSON(`http://www.verinmuebles.com/pagewidget/fo?id=${global.cid}`, (data) => {
 			let favorites = (!!data.bc.bCodes) ? data.bc.bCodes : data.bc.bCFavorites;
 			if(!!favorites){
 				let favoriteHtml = require('../favorite-slider/index.jade')({
@@ -27,6 +26,4 @@ class FavoriteSlider{
 
 
 }
-
-module.exports = new FavoriteSlider();
 
