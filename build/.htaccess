@@ -87,6 +87,7 @@ RewriteRule quienes-somos$ index.php?v=inv
 RewriteRule condominios$ index.php?v=inv
 
 RewriteRule contacto$ index.php?v=inv
+RewriteRule /administrador/quienes-somos$ index.php?v=inv
 RewriteRule consigne-su-inmueble$ index.php?v=inv
 
 RewriteRule correo$ webmail.html?c=m

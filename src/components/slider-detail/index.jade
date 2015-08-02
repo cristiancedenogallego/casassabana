@@ -1,0 +1,12 @@
+.SliderDetail-photos#slider-photos(style="position: relative; top: 0px; left: 0px; width: 610px; height: 400px;overflow:hidden")
+		.SliderDetail-labels(style="position:absolute;")
+						.count-photos
+							.SliderDetail-label#photos #{images.length}
+							.SliderDetail-label#code Codigo #{code}
+							.SliderDetail-label#label(style=labelstyle) #{label}
+		.SliderDetail-slides(u="slides", style="cursor: move; position: absolute; left: 0px; top: 0px; right: 0; height: 400px;overflow: hidden; width: 610px")
+			each photo in images
+				.SliderDetail-slide
+					img(src="http://photos.verinmuebles.com/#{photo.image}", alt=photo.description, u="image", style="width:610px")
+			span(u="arrowleft" class="jssora01l" style="top: 50%;transform: translateY(-50%);-webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); left: 8px;")
+			span(u="arrowright" class="jssora01r" style="top: 50%;  transform: translateY(-50%); right: 8px;")

@@ -20,10 +20,29 @@ class Condominiums{
 	}
 
 	getCondominiums(){
-		let self = this;
-		return $.getJSON('/config/condominiums.json');
+	  let promise = new $.Deferred();
+		$.getJSON('/config/condominiums.json')
+			.done( (data) => {
+				promise.resolve( data.sort( this.sortCondominiums ) );
+			})
+			.error( (xhr, msg, thr) => {
+				console.error(msg);
+				return {};
+			});
+		return promise;
+	}
+
+	sortCondominiums(a,b){
+		if(a.order < b.order){
+			return -1;
+		}
+		else if (a.order > b.order) {
+			return 1;
+		}
+		else{
+			return 0;
+		}
 	}
 }
 
 module.exports = new Condominiums();
-

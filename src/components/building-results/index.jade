@@ -5,14 +5,18 @@
 		- var mainPhoto = detail.bInImages[0];
 		- var code = detail.bCodes;
 		- var labels = detail.bInLabels;
-		- var mainPhotoDescription = (!!detail.bInImages[0].description) ? detail.bInImages[0].description : '';
+		- var mainPhotoDescription = (!!mainPhoto && !!mainPhoto.description) ? detail.bInImages[0].description : '';
 		- var price = '$ '+detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-		- var labelStyle = (!!labels[0] && !!labels[0].label_color) ? `background: ${labels[0].label_color}` : ''
+		- var labelStyle = (!!labels[0] && !!labels[0].label_color) ? 'background: '+ labels[0].label_color  : ''
+		- var photo = (!!mainPhoto && !!mainPhoto.image) ? mainPhoto.image : ''
 
-		article.ResultsItem.col-md-4
+		article.ResultsItem.col-xs-12.col-sm-6.col-lg-4
 			a(href="/#{detail.permalink}-#{code.building_code}.html", target="_blank").ResultsItem-link
 				figure
-					img(src="#{hostImages}#{mainPhoto.image}", alt="#{mainPhotoDescription}").ResultsItem-image
+					if(photo !== '')
+							img(src="#{hostImages}#{photo}", alt="#{mainPhotoDescription}").ResultsItem-image
+					else
+							img(src="http://www.tapcocircuitsupply.com/images/home.png").ResultsItem-image
 					if labels.length > 0
 						.ResultsItem-ribbon(style=labelStyle) #{labels[0].label.name}
 				.ResultsItem-offerInfo.col-xs-12

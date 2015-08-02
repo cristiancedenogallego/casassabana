@@ -2,17 +2,18 @@ global.$ = require('jquery');
 class jsonManager{
 
 	getFromStorage(filename){
-		return new Promise( (resolve, reject) => {
-			if(sessionStorage.getItem(filename) !== null){
-				resolve(JSON.parse( sessionStorage.getItem(filename) ));
-			}else{
-				this.getFromFile(filename)
-					.then( (fileContent) => {
-						sessionStorage.setItem( filename, JSON.stringify(fileContent) )
-						resolve(fileContent);	
-					});
-			}
-		} );
+		let d = new $.Deferred();
+
+		if(sessionStorage.getItem(filename) !== null){
+			d.resolve(JSON.parse( sessionStorage.getItem(filename) ));
+		}else{
+			this.getFromFile(filename)
+				.then( (fileContent) => {
+					sessionStorage.setItem( filename, JSON.stringify(fileContent) )
+					d.resolve(fileContent);
+				});
+		}
+		return d;
 	}
 
 	getFromFile(filename){

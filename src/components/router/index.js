@@ -4,16 +4,14 @@ var detail = require('../building-detail/index.js');
 var jsonMan = require('../JSON-manager/index.js')
 import BuildingConsign from '../building-consign/index.js';
 import Favoriteslider from "../favorite-slider/index.js"
+import QSAdmin from "../admin/quienes_somos.js"
 
 class Routes{
 	navigateTo(route){
 		global.page(route);
 	}
 	defaultPage(params){
-		return new Promise( (resolve, reject) =>{
-			$('#root-container').html(require('../main-page/index.jade')(params));
-			resolve();
-		})
+		$('#root-container').html(require('../main-page/index.jade')(params));
 	}
 	constructor(){
 		if(typeof global.page === "undefined"){
@@ -104,6 +102,11 @@ class Routes{
 				let a  = new Admin();
 			});
 
+			page('/administrador/quienes-somos', function(ctx){
+				  
+					new QSAdmin();
+			});
+
 			page('/:permalink', function(ctx){
 				let codeMatch = ctx.params.permalink.match( new RegExp('([0-9]*)(\.html)') );
 				let code = codeMatch[1];
@@ -120,6 +123,3 @@ class Routes{
 // Load routes
 
 module.exports = new Routes();
-
-
-

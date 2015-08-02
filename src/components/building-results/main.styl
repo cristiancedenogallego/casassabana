@@ -22,9 +22,11 @@ grayscalemix(percent)
 	text-align center
 .ResultsItem
 	position relative
+	display inline-block
 	margin-bottom 30px
 	&-container
 		margin 2em 0
+		text-align center
 	&-ribbon
 		background color_base
 		position absolute
@@ -39,7 +41,6 @@ grayscalemix(percent)
 		filter: gray;
 		grayscalemix 100%
 		customTransition
-		height 332px
 		&:hover
 			grayscalemix 0%
 	&-link
@@ -82,3 +83,11 @@ grayscalemix(percent)
 		color color_base
 		border 1px solid color_base
 	  	font-size: 18px;
+@media screen and (max-width: 1000px)
+	.ResultsItem
+		&-image
+			height auto
+@media (min-width: 1200px) and (max-width: 1400px)
+	.ResultsItem
+		&-offerInfo
+			font-size 12px

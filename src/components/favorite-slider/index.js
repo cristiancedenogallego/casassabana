@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var JSONmanager = require('../JSON-manager/index.js')
+import Hammer from 'hammerjs';
 
 export default class FavoriteSlider{
 	constructor(){
@@ -18,6 +19,15 @@ export default class FavoriteSlider{
 					codes: favorites
 				});
 				$('.FavoriteSlider').html(favoriteHtml);
+				let hammerBtsCarousel = new Hammer( document.getElementById('carousel-favorite'), {} );
+
+				hammerBtsCarousel.on('swiperight', function(){
+					$("#carousel-favorite").carousel('prev');
+				});
+
+				hammerBtsCarousel.on('swipeleft', function(){
+					$("#carousel-favorite").carousel('next');
+				});
 			}else{
 				$('.FavoriteSlider').remove();
 			}
@@ -26,4 +36,3 @@ export default class FavoriteSlider{
 
 
 }
-

@@ -1,0 +1,15 @@
+- var facebook_link = 'https://www.facebook.com/sharer/sharer.php?u=' + location.href;
+- var twitter_link = "https://twitter.com/home?status=" + location.href;
+- var linkedin_link = "https://www.linkedin.com/shareArticle?mini=true&url=" + location.href + "&title="+document.title + "&summary=&source=";
+.ShareBar
+	.ShareBar-content
+		.ShareBar-firstColumn
+			.ShareBar-label.col-md-6.col-xs-12.hidden-xs Compartir con tus amigos:
+			.ShareBar-options.col-md-6.col-xs-12
+				each social in [{_class:"fa fa-facebook-square", link: facebook_link},{_class:"fa fa-twitter-square", link: twitter_link},{_class:"fa fa-linkedin-square", link: linkedin_link}]
+					a.ShareBar-option(href=social.link, target="_blank"): i(class=social._class)
+				a.ShareBar-option#share-mail(href=""): i.fa.fa-envelope-square
+				a.ShareBar-option#share-mail(href="javascript:window.print(); void 0;"): i.fa.fa-print
+		.ShareBar-secondColumn
+				span.col-md-2 URL:
+				.col-md-10: input.ShareBar-url(value=location.href)

@@ -1,0 +1,45 @@
+form#consign-form.col-md-8.col-md-offset-2(method='post', action='http://www.verinmuebles.com/pageForms/consignarInmueble?consignacion=true', role='form')
+  legend Consigne su inmueble
+  .form-group
+    label(for='name') Nombre: 
+    input.form-control(type='text', name='name')
+  .form-group
+    label(for='phone') Teléfono: 
+    input.form-control(type='phone', name='phone')
+  .form-group
+    label(for='email') Correo: 
+    input.form-control(type='email', name='email')
+  .form-group
+    label(for='comments') Mensaje: 
+    textarea.form-control(name='comments', id='', cols='30', rows='4', placeholder='Barrio(s) No de habitaciones, No de baños, estrato, garajes, antigüedad, piso, presupuesto')
+  .form-group
+    select.form-control(name='tb')
+      option Elija un inmueble
+      option(value='Apartamento') Apartamento
+      option(value='Casa') Casa
+      option(value='Oficina') Oficina
+      option(value='Local') Local
+      option(value='Bodega') Bodega
+      option(value='Terreno') Terreno
+      option(value='Edificio') Edificio
+      option(value='Habitación') Habitación
+      option(value='Casa de Campo') Casa de Campo
+      option(value='Finca Productiva') Finca Productiva
+      option(value='Hotel') Hotel
+      option(value='Consultorio') Consultorio
+      option(value='Lote') Lote
+      option(value='Parqueadero') Parqueadero
+      option(value='Apartaestudio') Apartaestudio
+      option(value='Parcelación') Parcelación
+      option(value='Finca Recreativa') Finca Recreativa
+      option(value='Suite') Suite
+      option(value='CabaÃ±a') CabaÃ±a
+      option(value='Casalote') Casalote
+      option(value='Centro Vacacional') Centro Vacacional
+  .form-group
+    select.form-control(name='tof')
+      option Tipo de oferta
+      option(value='Arriendo') Arriendo
+      option(value='Venta') Venta
+      option(value='Turismo') Turismo
+  button.btn.btn-primary(type='submit') Enviar Requerimiento

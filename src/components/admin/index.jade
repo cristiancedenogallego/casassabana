@@ -1,0 +1,32 @@
+style
+	include tags-input.css
+.container
+	.condominium-card
+		h1 Editar grupo
+			small arrastre para cambiar el orden
+		small Haga click para editar
+		.container-fluid
+			ul#condominiums-list
+				each c in condominiums
+					li.condominium-edit(data-id=c.id, data-order=c.order, data-title=c.title, data-facebook=c.facebook, data-comments=c.comments, data-codes=c.codes, dragable="true") #{c.title}
+	.condominium-card
+		.container-fluid
+			form.form-horizontal(action='/admin/condominios.php', method='POST', role='form', id="form-condominium")
+				input(type="hidden" name="id")
+				.form-group
+					h1 Crear nuevo grupo
+				.form-group
+					label Nombre condominio.
+					input.form-control(type='text', placeholder='nombre', name="title")
+				.form-group
+					label Descripcion.
+					textarea.form-control(type='text', placeholder='Descripcion', name="comments")
+				.form-group
+					label url.
+					input.form-control(type='url', placeholder='url facebook', name="facebook")
+				.form-group
+					label Codigos.
+					input.form-control(type='tags', placeholder='Escriba el código a continuación precione la tecla ENTER', name="codes", id="tags-codes")
+				.form-group
+					.col-sm-10.col-sm-offset-2
+						button.btn.btn-primary(type='submit') Guardar

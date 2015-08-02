@@ -15,28 +15,31 @@
     "jssorslider": "^1.0.3",
     "page": "^1.6.3",
     "slider-pro": "^1.2.1",
-    "tags-input": "^0.8.0"
+    "tags-input": "^0.8.0",
+    "wysiwyg": "^0.2.0",
+    "wysiwyg.js": "^1.0.0"
   },
   "devDependencies": {
     "babelify": "^6.1.2",
-    "gulp": "^3.9.0",
     "browser-sync": "^2.7.13",
     "browserify": "^10.2.4",
+    "connect-livereload": "^0.5.3",
+    "escape-html": "^1.0.2",
+    "gulp": "^3.9.0",
+    "gulp-connect-php": "0.0.5",
     "gulp-ext-replace": "^0.2.0",
+    "gulp-jade": "^1.0.1",
+    "gulp-livereload": "^3.8.0",
     "gulp-stylus": "^2.0.5",
     "gulp-watch": "^4.2.4",
     "jadeify": "^4.3.0",
-    "nib": "^1.1.0",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "connect-livereload": "^0.5.3",
-    "escape-html": "^1.0.2",
-    "gulp-connect-php": "0.0.5",
-    "gulp-jade": "^1.0.1",
-    "gulp-livereload": "^3.8.0",
+    "jquery-ui": "^1.10.5",
     "ms": "^0.7.1",
+    "nib": "^1.1.0",
     "on-finished": "^2.3.0",
     "tiny-lr": "^0.1.6",
-    "unpipe": "^1.0.0"
+    "unpipe": "^1.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

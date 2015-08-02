@@ -23,6 +23,8 @@ html(lang="es")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 		meta(charset="UTF-8")
 		link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+		//if lt IE 9
+			script(src='http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js')
 	body
 		.container-fluid.Layout
 			.Layout-topBar
@@ -33,7 +35,7 @@ html(lang="es")
 					a#youtube.Layout-socialIcon(href="http://", target="_blank")
 					a#linkedin.Layout-socialIcon(href="http://", target="_blank")
 				.Layout-topBanner
-					a#topBanner(href="/")
+					a.Layout-homeLink#topBanner(href="/")
 						img#topBannerImg.Layout-logo(src="/images/logo.jpg")
 			nav(role="navigation").navbar.navbar-default
 				.navbar-header

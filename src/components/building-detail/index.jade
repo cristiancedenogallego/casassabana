@@ -1,0 +1,42 @@
+- var form_options = {no_label: true, placeholder: true, button_inverse: true, hidde_lengend: true}
+- var _class = 'ContactForm--background'
+h1.BuildingDetail-title.text-color-base.text-center #{verinmuebles_title}
+h2.BuildingDetail-price.text-center.text-color-base
+	span Precio:
+	span#price $ #{price}
+.BuildingDetail-features
+	each feature in features
+		if(!!feature.value)
+			.BuildingDetail-feature
+				span.BuildingDetail-label #{feature.label}:
+				span.BuildingDetail-value #{feature.value}
+.BuildingDetail-left.col-md-9
+	include ../slider-detail/index
+	h2.BuildingDetail-customTitle.text-color-base.text-center #{title}
+	.BuildingDetail-location.text-center #{sector} - #{city}
+	.BuildingDetail-city.text-center #{city} - Colombia
+	p.BuildingDetail-comments #{comments}
+	.BuildingDetail-consulted.text-center
+		label Consultado en: 
+		span #{views} Ocasiones.
+	include ../share-bar/index
+	include ../fbComments/index
+	.FbComments
+.BuildingDetail-right.col-md-3
+	a(href="http://www.verinmuebles.com/building/getMap/59228?lat=#{lat}&lng=#{lng}&ext=645", target="_blank").GooElement
+		.GooElement-label Mapa
+		img.GooElement-image(src="http://maps.googleapis.com/maps/api/staticmap?center=#{lat},#{lng}&size=199x150&zoom=16&scale=2&markers=icon:http://static.verinmuebles.com/pointer_wp.png|shadow:true|center:4.864143,-74.043945", alt="ubicación")
+	a(href="http://www.verinmuebles.com/building/getSt/59228?lat=#{lat}&lng=#{lng}&ext=645", target="_blank").GooElement
+		.GooElement-label streetview
+		img.GooElement-image(src="http://maps.googleapis.com/maps/api/streetview?size=199x150&location=#{lat},#{lng}&fov=90&heading=235&pitch=10&sensor=false", alt="ubicación")
+	.AgentDetail
+		picture
+			img.AgentDetail-image(src="http://www.verinmuebles.com/clients/responsibles/#{agents.image}", alt="")
+		.AgentDetail-name #{agents.name} #{agents.lastname}
+		.AgentDetail-phones #{agents.phone1}-#{agents.phone2}
+		.AgentDetail-location #{agents.city}, #{agents.country0.country_name}
+		img.AgentDetail-inmoImage(src="http://www.verinmuebles.com/clients/#{clients.image}", alt="")
+		.AgentDetail-InmoName Casas en la Sabana
+		.AgentDetail-InmoLocation Chía, Colombia
+	.Contact-form
+		include ../Contact-form/index
