@@ -1,4 +1,4 @@
-<html><head><link href="/bower_components/alloyeditor/dist/alloy-editor/assets/alloy-editor-ocean-min.css" rel="stylesheet"/><link href="/styles/main.css" rel="stylesheet"/><style>.cke_editable{
+<html><head><link href="/bower_components/alloyeditor/dist/alloy-editor/assets/alloy-editor-ocean-min.css" rel="stylesheet"/><link href="/styles/main.css" rel="stylesheet"/><meta meta="meta" charset="UTF-8"/><style>.cke_editable{
 	background: white;
 	width: 69%;
 	position: absolute;

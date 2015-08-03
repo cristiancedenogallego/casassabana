@@ -1,8 +1,6 @@
 global.jQuery = require('jquery');
 require('../contact-info/index.js')
 
-
-
 let $ = jQuery;
 
 

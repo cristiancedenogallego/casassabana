@@ -12,7 +12,6 @@ export default class Admin{
 			 }catch(e){
 				 console.warn(e)
 			 }
-			 
 			
 			 // Sort condominiums
 			 $('#condominiums-list').sortable({
