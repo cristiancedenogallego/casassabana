@@ -62,6 +62,8 @@ RewriteCond %{REQUEST_URI} !/webmail.html$
 
 RewriteCond %{REQUEST_URI} !/sections/.*\.html$
 
+RewriteCond %{REQUEST_URI} !/quienes-somos-editable.html$
+
 RewriteRule ^.*\.html$ index.php?id=1
 
 RewriteRule [0-9]$ index.php?id=1
@@ -80,6 +82,8 @@ RewriteRule inversion$ index.php?v=inv
 
 RewriteRule administrador$ index.php
 
+RewriteRule administrador-quienes-somos.html$ quienes-editor.php?v=inv
+
 RewriteRule condominio\/.*$ index.php?v=inv
 
 RewriteRule quienes-somos$ index.php?v=inv
@@ -87,7 +91,7 @@ RewriteRule quienes-somos$ index.php?v=inv
 RewriteRule condominios$ index.php?v=inv
 
 RewriteRule contacto$ index.php?v=inv
-RewriteRule /administrador/quienes-somos$ index.php?v=inv
+
 RewriteRule consigne-su-inmueble$ index.php?v=inv
 
 RewriteRule correo$ webmail.html?c=m

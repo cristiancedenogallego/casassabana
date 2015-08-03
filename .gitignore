@@ -1,7 +1,3 @@
-# Build desarrollo
-build/**/*.js
-build/**/*.css
-build/**/*.php
 # Node modules
 node_modules/*
 prepros.cfg

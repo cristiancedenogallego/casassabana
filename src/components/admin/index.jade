@@ -2,6 +2,7 @@ style
 	include tags-input.css
 .container
 	.condominium-card
+		a(href="/quienes-editor.php", target="_blank") EDITAR QUIENES SOMOS
 		h1 Editar grupo
 			small arrastre para cambiar el orden
 		small Haga click para editar
@@ -17,7 +18,7 @@ style
 					h1 Crear nuevo grupo
 				.form-group
 					label Nombre condominio.
-					input.form-control(type='text', placeholder='nombre', name="title")
+					input.form-control(type='text', placeholder='nombre', name="title", required="required")
 				.form-group
 					label Descripcion.
 					textarea.form-control(type='text', placeholder='Descripcion', name="comments")
@@ -25,8 +26,11 @@ style
 					label url.
 					input.form-control(type='url', placeholder='url facebook', name="facebook")
 				.form-group
-					label Codigos.
+					label Códigos.
 					input.form-control(type='tags', placeholder='Escriba el código a continuación precione la tecla ENTER', name="codes", id="tags-codes")
+				.form-group
+					label Url video youtube.
+					input.form-control(type='url', placeholder='Url video youtube', name="video_url" )
 				.form-group
 					.col-sm-10.col-sm-offset-2
 						button.btn.btn-primary(type='submit') Guardar

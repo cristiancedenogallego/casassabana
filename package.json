@@ -9,13 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "alloyeditor": "^0.4.0-alpha.1",
     "bootstrap": "^3.3.5",
     "hammerjs": "^2.0.4",
     "jquery": "^2.1.4",
     "jssorslider": "^1.0.3",
     "page": "^1.6.3",
+    "react": "^0.13.3",
     "slider-pro": "^1.2.1",
     "tags-input": "^0.8.0",
+    "wizardwig": "^0.1.3",
     "wysiwyg": "^0.2.0",
     "wysiwyg.js": "^1.0.0"
   },

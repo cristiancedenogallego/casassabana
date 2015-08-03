@@ -15,7 +15,10 @@ class Condominiums{
 		});
 	}
 
-	renderDetail(qSelector="#root-container", condominiumInfo){
+	renderDetail(qSelector="#root-container", condominiumInfo, vid){
+        if(vid){
+            condominiumInfo.video_url = vid; // push video youtube 
+        }
 		$(qSelector).html( require('../condominiums/detail.jade')(condominiumInfo) )
 	}
 

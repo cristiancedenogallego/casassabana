@@ -7,12 +7,18 @@ export default class Admin{
 		condominium.getCondominiums().done((data) => {
 			 let self = this;
  			 $('body').html( require('../admin/index.jade')({condominiums: data}) ); // load View
-			 tagsInput( document.getElementById('tags-codes') ); // Load tagimpu plugin
+			 try{
+				 [].forEach.call(document.querySelectorAll('input[type="tags"]'), tagsInput);
+			 }catch(e){
+				 console.warn(e)
+			 }
+			 
+			
 			 // Sort condominiums
 			 $('#condominiums-list').sortable({
 				 stop: function(event, ui) {
-		        self.updateCondominiumsOrder()
-		     }
+		         self.updateCondominiumsOrder()
+				}
 			 });
 		});
 		$(document)

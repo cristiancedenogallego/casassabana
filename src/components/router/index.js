@@ -13,6 +13,30 @@ class Routes{
 	defaultPage(params){
 		$('#root-container').html(require('../main-page/index.jade')(params));
 	}
+    _getVideoID(vurl){
+        const pttrns = [/youtube\.com\/watch\?v=([^\&\?\/]+)/, /youtube\.com\/embed\/([^\&\?\/]+)/, /youtube\.com\/v\/([^\&\?\/]+)/,
+                        /youtu\.be\/([^\&\?\/]+)/, /youtube\.com\/verify_age\?next_url=\/watch%3Fv%3D([^\&\?\/]+)/]
+        let vid;
+        
+        try{
+            $.each(pttrns, (index, pttrn) => {
+                if(pttrn.test(vurl)){
+                    vid = vurl.match(pttrn)[1];
+                    return false; // Break each
+                }
+            });
+        }catch(e){
+            console.error(`Error obteniendo id video ${vurl}`, e);
+        }
+        
+        if(typeof vid === 'undefined'){
+            // Si no coincide con ninguno de los patrones
+            console.warn(`la url ${vurl} no tiene un fomato valido.`);
+            return false;
+        }else{
+            return vid;
+        }
+    }
 	constructor(){
 		if(typeof global.page === "undefined"){
 			var self = this;
@@ -67,7 +91,10 @@ class Routes{
 				results_search.search(filters)
 			})
 			page('/quienes-somos', function(){
-				$('#root-container').html( require('../quienes-somos/index.jade')() );
+				$.get('/quienes-somos-editable.html', function( html ){
+					$('#root-container').html( html );
+				})
+				
 			})
 
 			page('/consigne-su-inmueble', function(){
@@ -87,10 +114,15 @@ class Routes{
 			page('/condominio/:condominio', function(ctx, next){
 				let condominiums = require('../condominiums/index.js');
 				let path = ctx.path;
+                
 				condominiums.getCondominiums().done( (data) => {
 					$.each(data, (index, c) => {
 						if(decodeURIComponent(path) === c.link){
-							condominiums.renderDetail(undefined, c);
+                            if(c.video_url){
+                                let vurl = c.video_url;
+                                var vid = self._getVideoID(vurl);
+                            }
+							condominiums.renderDetail(undefined, c, vid);
 							results_search.search( [`codes=${c.codes}`, `page=0`], '.Condominiums-buildings' );
 						}
 					});
@@ -103,7 +135,6 @@ class Routes{
 			});
 
 			page('/administrador/quienes-somos', function(ctx){
-				  
 					new QSAdmin();
 			});
 

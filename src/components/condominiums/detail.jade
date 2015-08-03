@@ -3,4 +3,7 @@
 	p.Condominiums-description #{comments}
 	p.Condominiums-moreInfo Para mas información visita 
 		a.Condominiums-facebookBtn(href=facebook) Facebook #{title}
+	if video_url
+		.embed-responsive.embed-responsive-16by9
+			iframe(width="560" height="315", src="https://www.youtube.com/embed/" + video_url, frameborder="0", allowfullscreen=true,)
 	.Condominiums-buildings

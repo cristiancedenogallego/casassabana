@@ -1,0 +1,25 @@
+html
+	head
+		link(href="/bower_components/alloyeditor/dist/alloy-editor/assets/alloy-editor-ocean-min.css", rel="stylesheet")
+		link(href="/styles/main.css", rel="stylesheet")
+		style.
+			.cke_editable{
+				background: white;
+				width: 69%;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				padding: 1%;
+			}
+			.title-qs{
+				text-align: center
+			}
+	body
+		h1(style="boder-bottom: 1px solid black").title-qs  Editar el contenido quienes somos
+		button#save-qs guardar
+		textarea#qs_content(style="width: 80%")
+		script(src="//code.jquery.com/jquery-1.11.3.min.js")
+		script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js")
+		script(src="/bower_components/alloyeditor/dist/alloy-editor/alloy-editor-no-react-min.js")
+		script(src="/scripts/quienes-somos.js")
