@@ -44481,7 +44481,7 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-global.$ = require('jquery');
+global.$ = require("jquery");
 
 var jsonManager = (function () {
 	function jsonManager() {
@@ -44508,14 +44508,14 @@ var jsonManager = (function () {
 		value: function getFromFile(filename) {
 			return $.getJSON(filename);
 		}
+	}, {
+		key: "getContent",
 
 		/**
    * Retorna una promesa con el contenido del archivo
    * @param  {[type]} filename [description]
    * @return {[type]}          [description]
    */
-	}, {
-		key: "getContent",
 		value: function getContent(filename) {
 			if ("undefined" !== typeof sessionStorage) {
 				return this.getFromStorage(filename);
@@ -44662,7 +44662,7 @@ var Admin = (function () {
 		value: function loadTags() {
 			var $tagsInput = $('.tags-input');
 			var string_codes = $('[name=codes]').val();
-			var codes = string_codes.split(",");
+			var codes = string_codes.split(',');
 			var _iteratorNormalCompletion = true;
 			var _didIteratorError = false;
 			var _iteratorError = undefined;
@@ -44755,6 +44755,10 @@ var _createClass = (function () { function defineProperties(target, props) { for
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ArrayManager = (function () {
+  function ArrayManager() {
+    _classCallCheck(this, ArrayManager);
+  }
+
   _createClass(ArrayManager, [{
     key: "removeEmptys",
 
@@ -44776,10 +44780,6 @@ var ArrayManager = (function () {
       return arrayElements.join(separator);
     }
   }]);
-
-  function ArrayManager() {
-    _classCallCheck(this, ArrayManager);
-  }
 
   return ArrayManager;
 })();
@@ -44816,18 +44816,18 @@ var BuildingConsign = function BuildingConsign() {
 		event.preventDefault();
 		JSONmanager.getContent('/config/clients_inf.json').then(function (clients_inf) {
 			var $form = $(event.target);
-			var serialized = $form.serialize() + '&cid=' + clients_inf.clients_id;
+			var serialized = '' + $form.serialize() + '&cid=' + clients_inf.clients_id;
 
 			$.ajax({
 				url: $form.attr('action'),
 				type: $form.attr('method'),
 				data: serialized,
 				success: function success(data) {
-					alert("Gracias por contactarnos");
+					alert('Gracias por contactarnos');
 				},
 				error: function error(jqXHR, msg, thrownError) {
 					console.error(msg, thrownError);
-					alert("Error no es posible contactarnos en este momento");
+					alert('Error no es posible contactarnos en este momento');
 				}
 
 			});
@@ -44973,29 +44973,6 @@ var slider = require('../slider-detail/index.js');
 var PhotoViewer = require('../photoviewer/phoviewer.js');
 
 var BuildingDetail = (function () {
-	_createClass(BuildingDetail, [{
-		key: 'loadViewer',
-		value: function loadViewer() {
-			var BYLINE_POSITION_RIGHT = 30;
-			var BYLINE_POSITION_BOTTOM = 20;
-			var viewer = new PhotoViewer();
-			viewer.disableEmailLink();
-			viewer.disablePhotoLink();
-			viewer.enableAutoPlay();
-			viewer.setShadeColor("#000000");
-			viewer.setBackgroundColor("#CCCCCC");
-			viewer.setSlideDuration(3000);
-
-			$('[u="image"]').each(function (i) {
-				viewer.add($(this).attr('src'), '');
-				$(this).click(function () {
-					viewer.show(i);
-					return false;
-				});
-			});
-		}
-	}]);
-
 	function BuildingDetail(code, clients_id) {
 		var _this = this;
 
@@ -45004,10 +44981,10 @@ var BuildingDetail = (function () {
 		this.code = code;
 		$.post('http://www.verinmuebles.com/pagewidget/loaddetails', { usercode: clients_id, code: code }, function (data) {
 			var detail = data.model.bDetails[0];
-			var price = detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-			var features = [{ label: "Habitaciones", value: detail.rooms }, { label: "Baños", value: detail.bathrooms }, { label: "Depositos", value: detail.deposit }, { label: "Garajes", value: detail.garages }, { label: "Pisos/Niveles", value: detail.level }, { label: "Capacidad", value: detail.persons }, { label: "Estrato", value: detail.stratum }];
+			var price = detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+			var features = [{ label: 'Habitaciones', value: detail.rooms }, { label: 'Baños', value: detail.bathrooms }, { label: 'Depositos', value: detail.deposit }, { label: 'Garajes', value: detail.garages }, { label: 'Pisos/Niveles', value: detail.level }, { label: 'Capacidad', value: detail.persons }, { label: 'Estrato', value: detail.stratum }];
 
-			var verinmuebles_title = detail.kindOffer.offer_reference_res + ' ' + detail.kindBuilding.building_name + ' ' + detail.sector0.sector_name + ' ' + detail.area_m + ' ' + detail.areaUm.metter_reference;
+			var verinmuebles_title = '' + detail.kindOffer.offer_reference_res + ' ' + detail.kindBuilding.building_name + ' ' + detail.sector0.sector_name + ' ' + detail.area_m + ' ' + detail.areaUm.metter_reference;
 			var _html = require('../building-detail/index.jade')({
 				price: price,
 				features: features,
@@ -45031,6 +45008,29 @@ var BuildingDetail = (function () {
 			var s = new slider();
 		});
 	}
+
+	_createClass(BuildingDetail, [{
+		key: 'loadViewer',
+		value: function loadViewer() {
+			var BYLINE_POSITION_RIGHT = 30;
+			var BYLINE_POSITION_BOTTOM = 20;
+			var viewer = new PhotoViewer();
+			viewer.disableEmailLink();
+			viewer.disablePhotoLink();
+			viewer.enableAutoPlay();
+			viewer.setShadeColor('#000000');
+			viewer.setBackgroundColor('#CCCCCC');
+			viewer.setSlideDuration(3000);
+
+			$('[u="image"]').each(function (i) {
+				viewer.add($(this).attr('src'), '');
+				$(this).click(function () {
+					viewer.show(i);
+					return false;
+				});
+			});
+		}
+	}]);
 
 	return BuildingDetail;
 })();
@@ -45061,7 +45061,7 @@ var mainPhoto = detail.bInImages[0];
 var code = detail.bCodes;
 var labels = detail.bInLabels;
 var mainPhotoDescription = (!!mainPhoto && !!mainPhoto.description) ? detail.bInImages[0].description : '';
-var price = '$ '+detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+var price = typeof detail.bInPrices.offer_value !== "undefined" ? '$ '+ detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, ".") : '-'
 var labelStyle = (!!labels[0] && !!labels[0].label_color) ? 'background: '+ labels[0].label_color  : ''
 var photo = (!!mainPhoto && !!mainPhoto.image) ? mainPhoto.image : ''
 buf.push("<article class=\"ResultsItem col-xs-12 col-sm-6 col-lg-4\"><a" + (jade.attr("href", "/" + (detail.permalink) + "-" + (code.building_code) + ".html", true, false)) + " target=\"_blank\" class=\"ResultsItem-link\"><figure>");
@@ -45090,7 +45090,7 @@ var mainPhoto = detail.bInImages[0];
 var code = detail.bCodes;
 var labels = detail.bInLabels;
 var mainPhotoDescription = (!!mainPhoto && !!mainPhoto.description) ? detail.bInImages[0].description : '';
-var price = '$ '+detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+var price = typeof detail.bInPrices.offer_value !== "undefined" ? '$ '+ detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, ".") : '-'
 var labelStyle = (!!labels[0] && !!labels[0].label_color) ? 'background: '+ labels[0].label_color  : ''
 var photo = (!!mainPhoto && !!mainPhoto.image) ? mainPhoto.image : ''
 buf.push("<article class=\"ResultsItem col-xs-12 col-sm-6 col-lg-4\"><a" + (jade.attr("href", "/" + (detail.permalink) + "-" + (code.building_code) + ".html", true, false)) + " target=\"_blank\" class=\"ResultsItem-link\"><figure>");
@@ -45128,16 +45128,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var $ = require('jquery');
 
 var BuildingResults = (function () {
+	function BuildingResults() {
+		_classCallCheck(this, BuildingResults);
+	}
+
 	_createClass(BuildingResults, [{
 		key: 'renderInElement',
 		value: function renderInElement(qSelector, resultsObject) {
 			if (qSelector === undefined) qSelector = '#main-content';
-			var actualPage = arguments.length <= 2 || arguments[2] === undefined ? 0 : arguments[2];
+			var actualPage = arguments[2] === undefined ? 0 : arguments[2];
 			var count = resultsObject.count;
 			var model = resultsObject.model;
 
 			var resultsHtml = '<h3 class="text-center">No se han encontrado propiedades con el criterio indicado</h3>';
-
+			var $qs = $(qSelector);
 			if (count !== '0') {
 
 				resultsHtml = require('../building-results/index.jade')({
@@ -45148,17 +45152,13 @@ var BuildingResults = (function () {
 			}
 
 			if (actualPage === 0) {
-				$(qSelector).html(resultsHtml);
+				$qs.html(resultsHtml);
 			} else {
 				$('#resultsItem-loadMore').remove(); // Remover botón cargar más
-				$(qSelector).append(resultsHtml);
+				$qs.append(resultsHtml);
 			}
 		}
 	}]);
-
-	function BuildingResults() {
-		_classCallCheck(this, BuildingResults);
-	}
 
 	return BuildingResults;
 })();
@@ -45182,6 +45182,7 @@ var BuildingSearch = (function () {
 
 		_classCallCheck(this, BuildingSearch);
 
+		this.codes = '';
 		$(document).on('submit', '#search-form', function (event) {
 			event.preventDefault();
 			_this.page = 0;
@@ -45190,7 +45191,7 @@ var BuildingSearch = (function () {
 			if (query !== '') {
 				filters.push('cod=' + query);
 			}
-			_this.search(filters);
+			_this.search(filters, '.Condominiums-buildings');
 		});
 
 		$('#root-container').on('click', '#resultsItem-loadMore', function (event) {
@@ -45200,11 +45201,11 @@ var BuildingSearch = (function () {
 			var filters = new Array();
 			_this.page = nextPage;
 
-			if (query !== '') {
+			if (query) {
 				filters.push('cod=' + query);
 			}
 			filters.push('page=' + nextPage);
-			_this.search(filters);
+			_this.search(filters, '.Condominiums-buildings');
 		});
 	}
 
@@ -45212,6 +45213,21 @@ var BuildingSearch = (function () {
 		key: 'search',
 		value: function search(filters, renderOn) {
 			var self = this;
+			var fullfilters = filters.join('');
+
+			if (fullfilters.indexOf('codes=') === -1 && this.codes !== '') {
+				filters.push(this.codes);
+			} else if (fullfilters.indexOf('codes=') > -1) {
+				var m = fullfilters.match(/codes=[0-9,]*/);
+				this.codes = m[0];
+			}
+
+			$.each(filters, function (index, el) {
+				if (!el) {
+					filters.splice(index, 1);
+				}
+			});
+
 			JSONmanager.getContent('/config/clients_inf.json').then(function (clients_inf) {
 				var url = 'http://www.verinmuebles.com/pagewidget/findcondition?id=' + clients_inf.clients_id + '&' + filters.join('&');
 				$.ajax({
@@ -45301,7 +45317,7 @@ var Condominiums = (function () {
 	_createClass(Condominiums, [{
 		key: 'render',
 		value: function render() {
-			var qSelector = arguments.length <= 0 || arguments[0] === undefined ? '.SideBar' : arguments[0];
+			var qSelector = arguments[0] === undefined ? '.SideBar' : arguments[0];
 
 			this.getCondominiums().done(function (condominiums) {
 				var tpl = require('../condominiums/index.jade')({
@@ -45314,7 +45330,7 @@ var Condominiums = (function () {
 	}, {
 		key: 'renderDetail',
 		value: function renderDetail(qSelector, condominiumInfo, vid) {
-			if (qSelector === undefined) qSelector = "#root-container";
+			if (qSelector === undefined) qSelector = '#root-container';
 
 			if (vid) {
 				condominiumInfo.video_url = vid; // push video youtube
@@ -45407,17 +45423,17 @@ $form.on('submit', function (event) {
 	var method = $form.attr('method');
 	JSONmanager.getContent('/config/clients_inf.json').then(function (clients_inf) {
 		var cid = clients_inf.clients_id;
-		frmData = frmData + '&pgm=' + cid;
+		frmData = '' + frmData + '&pgm=' + cid;
 
 		$.ajax({
 			url: url,
 			data: frmData,
 			type: method,
 			success: function success(data) {
-				alert("Gracias por contactarnos");
+				alert('Gracias por contactarnos');
 			},
 			error: function error() {
-				alert("Ha ocurrido un error por favor intenta contactarnos de nuevo mas tarde.");
+				alert('Ha ocurrido un error por favor intenta contactarnos de nuevo mas tarde.');
 			}
 		});
 	});
@@ -45465,17 +45481,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var jsonMan = require('../JSON-manager/index.js');
 
 var ContactInfo = (function () {
-	_createClass(ContactInfo, [{
-		key: 'loadInfo',
-		value: function loadInfo(infoArray) {
-			$.each(infoArray, function (index, el) {
-				if (!!el.value) {
-					$(el.qSelector).html('<label>' + el.label + ': </label><span>el.value</span>');
-				}
-			});
-		}
-	}]);
-
 	function ContactInfo() {
 		_classCallCheck(this, ContactInfo);
 
@@ -45487,13 +45492,24 @@ var ContactInfo = (function () {
 				phones: phones,
 				workinghours: clients_inf.hourary,
 				country: clients_inf.country_name,
-				city: "Chia",
+				city: 'Chia',
 				email: clients_inf.email1
 			});
 
 			$('#contact-info').html(html);
 		});
 	}
+
+	_createClass(ContactInfo, [{
+		key: 'loadInfo',
+		value: function loadInfo(infoArray) {
+			$.each(infoArray, function (index, el) {
+				if (!!el.value) {
+					$(el.qSelector).html('<label>' + el.label + ': </label><span>el.value</span>');
+				}
+			});
+		}
+	}]);
 
 	return ContactInfo;
 })();
@@ -45588,11 +45604,11 @@ var FavoriteSlider = (function () {
 					var hammerBtsCarousel = new _hammerjs2['default'](document.getElementById('carousel-favorite'), {});
 
 					hammerBtsCarousel.on('swiperight', function () {
-						$("#carousel-favorite").carousel('prev');
+						$('#carousel-favorite').carousel('prev');
 					});
 
 					hammerBtsCarousel.on('swipeleft', function () {
-						$("#carousel-favorite").carousel('next');
+						$('#carousel-favorite').carousel('next');
 					});
 				} else {
 					$('.FavoriteSlider').remove();
@@ -45888,7 +45904,7 @@ function getDOMLocation(node) {
     while (node.offsetParent) {
         x = x + node.offsetParent.offsetLeft;
         y = y + node.offsetParent.offsetTop;
-        if (node == document.getElementsByTagName('body')[0]) {
+        if (node == document.getElementsByTagName("body")[0]) {
             break;
         } else {
             node = node.offsetParent;
@@ -45945,7 +45961,7 @@ function getElementValue(node) {
 
 function trim(str) {
     if (str == undefined) return undefined;
-    return str.replace(/^\s*([\s\S]*\S+)\s*$|^\s*$/, '$1');
+    return str.replace(/^\s*([\s\S]*\S+)\s*$|^\s*$/, "$1");
 }
 
 function trimToLen(str, len) {
@@ -46130,7 +46146,7 @@ function validCoordinates(lat, lon) {
     if (Math.abs(lat) > 90 || Math.abs(lon) > 180) {
         return false;
     }
-    if (lat === 0.0 && lon === 0.0) {
+    if (lat === 0 && lon === 0) {
         return false;
     }
     return true;
@@ -47007,7 +47023,7 @@ function addBackShade(zIndex) {
     }
     photoBack.style.zIndex = zIndex - 1;
     photoBack.style.backgroundColor = this.shadeColor;
-    if (this.backgroundShade) setOpacity(photoBack, this.shadeOpacity);else setOpacity(photoBack, 0.0);
+    if (this.backgroundShade) setOpacity(photoBack, this.shadeOpacity);else setOpacity(photoBack, 0);
     photoBack.onclick = onClickEvent;
     doc.body.appendChild(photoBack);
 }
@@ -47360,7 +47376,7 @@ function showOverlappingElements() {
 }
 
 function viewerHandleKey(event) {
-    if (typeof getViewer == 'undefined' || !getViewer) return true;
+    if (typeof getViewer == "undefined" || !getViewer) return true;
     var viewer = getViewer();
     if (viewer == undefined || !viewer.shown) return true;
     event = getEvent(event);
@@ -47810,11 +47826,11 @@ var _buildingConsignIndexJs = require('../building-consign/index.js');
 
 var _buildingConsignIndexJs2 = _interopRequireDefault(_buildingConsignIndexJs);
 
-var _favoriteSliderIndexJs = require("../favorite-slider/index.js");
+var _favoriteSliderIndexJs = require('../favorite-slider/index.js');
 
 var _favoriteSliderIndexJs2 = _interopRequireDefault(_favoriteSliderIndexJs);
 
-var _adminQuienes_somosJs = require("../admin/quienes_somos.js");
+var _adminQuienes_somosJs = require('../admin/quienes_somos.js');
 
 var _adminQuienes_somosJs2 = _interopRequireDefault(_adminQuienes_somosJs);
 
@@ -47824,47 +47840,10 @@ var detail = require('../building-detail/index.js');
 var jsonMan = require('../JSON-manager/index.js');
 
 var Routes = (function () {
-	_createClass(Routes, [{
-		key: 'navigateTo',
-		value: function navigateTo(route) {
-			global.page(route);
-		}
-	}, {
-		key: 'defaultPage',
-		value: function defaultPage(params) {
-			$('#root-container').html(require('../main-page/index.jade')(params));
-		}
-	}, {
-		key: '_getVideoID',
-		value: function _getVideoID(vurl) {
-			var pttrns = [/youtube\.com\/watch\?v=([^\&\?\/]+)/, /youtube\.com\/embed\/([^\&\?\/]+)/, /youtube\.com\/v\/([^\&\?\/]+)/, /youtu\.be\/([^\&\?\/]+)/, /youtube\.com\/verify_age\?next_url=\/watch%3Fv%3D([^\&\?\/]+)/];
-			var vid = undefined;
-
-			try {
-				$.each(pttrns, function (index, pttrn) {
-					if (pttrn.test(vurl)) {
-						vid = vurl.match(pttrn)[1];
-						return false; // Break each
-					}
-				});
-			} catch (e) {
-				console.error('Error obteniendo id video ' + vurl, e);
-			}
-
-			if (typeof vid === 'undefined') {
-				// Si no coincide con ninguno de los patrones
-				console.warn('la url ' + vurl + ' no tiene un fomato valido.');
-				return false;
-			} else {
-				return vid;
-			}
-		}
-	}]);
-
 	function Routes() {
 		_classCallCheck(this, Routes);
 
-		if (typeof global.page === "undefined") {
+		if (typeof global.page === 'undefined') {
 			var self = this;
 
 			// Homepage
@@ -47964,7 +47943,7 @@ var Routes = (function () {
 			});
 
 			page('/:permalink', function (ctx) {
-				var codeMatch = ctx.params.permalink.match(new RegExp('([0-9]*)(\.html)'));
+				var codeMatch = ctx.params.permalink.match(new RegExp('([0-9]*)(.html)'));
 				var code = codeMatch[1];
 				jsonMan.getContent('/config/clients_inf.json').then(function (clients_inf) {
 					var d = new detail(code, clients_inf.clients_id);
@@ -47976,10 +47955,47 @@ var Routes = (function () {
 		}
 	}
 
-	// Load routes
+	_createClass(Routes, [{
+		key: 'navigateTo',
+		value: function navigateTo(route) {
+			global.page(route);
+		}
+	}, {
+		key: 'defaultPage',
+		value: function defaultPage(params) {
+			$('#root-container').html(require('../main-page/index.jade')(params));
+		}
+	}, {
+		key: '_getVideoID',
+		value: function _getVideoID(vurl) {
+			var pttrns = [/youtube\.com\/watch\?v=([^\&\?\/]+)/, /youtube\.com\/embed\/([^\&\?\/]+)/, /youtube\.com\/v\/([^\&\?\/]+)/, /youtu\.be\/([^\&\?\/]+)/, /youtube\.com\/verify_age\?next_url=\/watch%3Fv%3D([^\&\?\/]+)/];
+			var vid = undefined;
+
+			try {
+				$.each(pttrns, function (index, pttrn) {
+					if (pttrn.test(vurl)) {
+						vid = vurl.match(pttrn)[1];
+						return false; // Break each
+					}
+				});
+			} catch (e) {
+				console.error('Error obteniendo id video ' + vurl, e);
+			}
+
+			if (typeof vid === 'undefined') {
+				// Si no coincide con ninguno de los patrones
+				console.warn('la url ' + vurl + ' no tiene un fomato valido.');
+				return false;
+			} else {
+				return vid;
+			}
+		}
+	}]);
 
 	return Routes;
 })();
+
+// Load routes
 
 module.exports = new Routes();
 
@@ -47996,7 +48012,7 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var jssorslider = require('jssorslider');
+var jssorslider = require("jssorslider");
 var slider_id = "slider-photos";
 
 var JsorSlider = (function () {
@@ -48016,12 +48032,12 @@ var JsorSlider = (function () {
 								$(window).bind("orientationchange", this.ScaleSlider);
 				}
 
-				/**
-     * Hacer responsive
-     */
-
 				_createClass(JsorSlider, [{
 								key: "ScaleSlider",
+
+								/**
+         * Hacer responsive
+         */
 								value: function ScaleSlider() {
 												var parentWidth = $("#" + slider_id).parent().width();
 												if (parentWidth) global.jssor_slider.$ScaleWidth(parentWidth);else window.setTimeout(this.ScaleSlider, 30);
@@ -48040,7 +48056,7 @@ module.exports = exports["default"];
 "use strict";
 
 global.jQuery = require("jquery");
-global.bootstrap = require('bootstrap');
+global.bootstrap = require("bootstrap");
 var Routes = require("../components/router/index.js");
 var sideBar = require("../components/condominiums/index.js");
 sideBar.render();

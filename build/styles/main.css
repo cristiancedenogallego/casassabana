@@ -7008,6 +7008,7 @@ input#tags-codes {
 }
 .ResultsItem-image {
   width: 100%;
+  height: 250px;
   filter: #808080;
   filter: #808080;
   -webkit-filter: grayscale(100%);

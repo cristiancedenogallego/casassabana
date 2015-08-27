@@ -6,7 +6,7 @@
 		- var code = detail.bCodes;
 		- var labels = detail.bInLabels;
 		- var mainPhotoDescription = (!!mainPhoto && !!mainPhoto.description) ? detail.bInImages[0].description : '';
-		- var price = '$ '+detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+		- var price = typeof detail.bInPrices.offer_value !== "undefined" ? '$ '+ detail.bInPrices.offer_value.toString().replace('.00', '').replace(/\B(?=(\d{3})+(?!\d))/g, ".") : '-'
 		- var labelStyle = (!!labels[0] && !!labels[0].label_color) ? 'background: '+ labels[0].label_color  : ''
 		- var photo = (!!mainPhoto && !!mainPhoto.image) ? mainPhoto.image : ''
 

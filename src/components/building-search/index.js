@@ -4,6 +4,7 @@ var JSONmanager = require('../JSON-manager/index.js')
 
 class BuildingSearch{
 	constructor(){
+		this.codes = '';
 		$(document).on('submit','#search-form', (event) => {
 			event.preventDefault();
 			this.page = 0;
@@ -12,7 +13,7 @@ class BuildingSearch{
 			if(query !== ''){
 				filters.push(`cod=${query}`);
 			}
-			this.search(filters);
+			this.search(filters, '.Condominiums-buildings');
 		});
 
 		$('#root-container').on('click', '#resultsItem-loadMore', (event) => {
@@ -22,15 +23,34 @@ class BuildingSearch{
 			let filters = new Array();
 			this.page = nextPage;
 
-			if(query !== ''){
+			if(query){
 				filters.push(`cod=${query}`);
 			}
 			filters.push(`page=${nextPage}`);
-			this.search(filters);
+			this.search(filters, '.Condominiums-buildings');
 		});
 	}
+
+
 	search(filters, renderOn){
 		let self = this;
+		let fullfilters = filters.join('');
+
+		if(fullfilters.indexOf('codes=') === -1 && this.codes !== ''){
+			filters.push(this.codes);
+		}
+
+		else if(fullfilters.indexOf('codes=') > -1){
+			let m = fullfilters.match(/codes=[0-9,]*/);
+			this.codes = m[0];
+		}
+
+		$.each(filters, (index, el)=>{
+			if(!el){
+				filters.splice(index, 1)
+			}
+		})
+
 		JSONmanager.getContent('/config/clients_inf.json')
 			.then( (clients_inf) => {
 				let url = `http://www.verinmuebles.com/pagewidget/findcondition?id=${clients_inf.clients_id}&${filters.join('&')}`;
