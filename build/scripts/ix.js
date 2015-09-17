@@ -45155,7 +45155,12 @@ var BuildingResults = (function () {
 				$qs.html(resultsHtml);
 			} else {
 				$('#resultsItem-loadMore').remove(); // Remover botón cargar más
-				$qs.append(resultsHtml);
+
+				if ($('.ResultsItem-container').length > 0) {
+					$('.ResultsItem-container').append(resultsHtml);
+				} else {
+					$qs.append(resultsHtml);
+				}
 			}
 		}
 	}]);
@@ -45166,6 +45171,7 @@ var BuildingResults = (function () {
 module.exports = new BuildingResults();
 
 },{"../building-results/index.jade":193,"jquery":22}],195:[function(require,module,exports){
+(function (global){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -45186,7 +45192,7 @@ var BuildingSearch = (function () {
 		$(document).on('submit', '#search-form', function (event) {
 			event.preventDefault();
 			_this.page = 0;
-			var filters = new Array();
+			var filters = [];
 			var query = $('#querySearch').val();
 			if (query !== '') {
 				filters.push('cod=' + query);
@@ -45198,13 +45204,14 @@ var BuildingSearch = (function () {
 			var $target = $(event.target);
 			var nextPage = parseInt($target.data('page')) + 1;
 			var query = $('#querySearch').val();
-			var filters = new Array();
+			var filters = typeof global.filters !== 'undefined' ? global.filters : [];
 			_this.page = nextPage;
 
 			if (query) {
 				filters.push('cod=' + query);
 			}
 			filters.push('page=' + nextPage);
+
 			_this.search(filters, '.Condominiums-buildings');
 		});
 	}
@@ -45212,6 +45219,7 @@ var BuildingSearch = (function () {
 	_createClass(BuildingSearch, [{
 		key: 'search',
 		value: function search(filters, renderOn) {
+			global.filters = filters;
 			var self = this;
 			var fullfilters = filters.join('');
 
@@ -45250,6 +45258,7 @@ var BuildingSearch = (function () {
 
 module.exports = new BuildingSearch();
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../JSON-manager/index.js":183,"../building-results/index.js":194,"jquery":22}],196:[function(require,module,exports){
 var jade = require("jade/runtime");
 

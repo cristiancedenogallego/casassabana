@@ -16,12 +16,16 @@ class BuildingResults{
 			});
 		}
 
-
 		if(actualPage === 0){
 			$qs.html( resultsHtml );
 		}else{
 			$('#resultsItem-loadMore').remove(); // Remover botón cargar más
-			$qs.append( resultsHtml );
+
+			if($('.ResultsItem-container').length > 0){
+				$('.ResultsItem-container').append( resultsHtml )
+			}else{
+				$qs.append( resultsHtml );
+			}
 		}
 	}
 
@@ -30,4 +34,4 @@ class BuildingResults{
 
 }
 
-module.exports = new BuildingResults()
+module.exports = new BuildingResults();

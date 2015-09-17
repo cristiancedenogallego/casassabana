@@ -1,6 +1,6 @@
 var $ = require('jquery');
 var results_building = require('../building-results/index.js');
-var JSONmanager = require('../JSON-manager/index.js')
+var JSONmanager = require('../JSON-manager/index.js');
 
 class BuildingSearch{
 	constructor(){
@@ -8,7 +8,7 @@ class BuildingSearch{
 		$(document).on('submit','#search-form', (event) => {
 			event.preventDefault();
 			this.page = 0;
-			let filters = new Array();
+			let filters = [];
 			let query = $('#querySearch').val();
 			if(query !== ''){
 				filters.push(`cod=${query}`);
@@ -20,19 +20,21 @@ class BuildingSearch{
 			let $target = $(event.target);
 			let nextPage = parseInt( $target.data('page') ) + 1;
 			let query = $('#querySearch').val();
-			let filters = new Array();
+			let filters = typeof global.filters !== 'undefined' ? global.filters : [];
 			this.page = nextPage;
 
 			if(query){
 				filters.push(`cod=${query}`);
 			}
 			filters.push(`page=${nextPage}`);
+
 			this.search(filters, '.Condominiums-buildings');
 		});
 	}
 
 
 	search(filters, renderOn){
+		global.filters = filters;
 		let self = this;
 		let fullfilters = filters.join('');
 
@@ -45,11 +47,12 @@ class BuildingSearch{
 			this.codes = m[0];
 		}
 
+
 		$.each(filters, (index, el)=>{
 			if(!el){
-				filters.splice(index, 1)
+				filters.splice(index, 1);
 			}
-		})
+		});
 
 		JSONmanager.getContent('/config/clients_inf.json')
 			.then( (clients_inf) => {
