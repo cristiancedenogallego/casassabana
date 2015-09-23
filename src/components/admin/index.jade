@@ -9,7 +9,7 @@ style
 		.container-fluid
 			ul#condominiums-list
 				each c in condominiums
-					li.condominium-edit(data-id=c.id, data-order=c.order, data-title=c.title, data-facebook=c.facebook, data-comments=c.comments, data-codes=c.codes, dragable="true") #{c.title}
+					li.condominium-edit(data-id=c.id, data-order=c.order, data-title=c.title, data-facebook=c.facebook, data-comments=c.comments, data-codes=c.codes, data-videourl=c.video_url, dragable="true") #{c.title}
 	.condominium-card
 		.container-fluid
 			form.form-horizontal(action='/admin/condominios.php', method='POST', role='form', id="form-condominium")

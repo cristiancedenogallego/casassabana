@@ -9,7 +9,11 @@ class jsonManager{
 		}else{
 			this.getFromFile(filename)
 				.then( (fileContent) => {
-					sessionStorage.setItem( filename, JSON.stringify(fileContent) )
+					try{
+						sessionStorage.setItem( filename, JSON.stringify(fileContent) );
+					}catch(error){
+						console.log(error);
+					}
 					d.resolve(fileContent);
 				});
 		}

@@ -1,9 +1,11 @@
 var condominium = require('../condominiums/index.js');
 var tagsInput = require('tags-input');
+import webshims from 'webshim';
 require('jquery-ui/sortable');
 
 export default class Admin{
 	constructor(){
+		webshim.polyfill('forms');
 		condominium.getCondominiums().done((data) => {
 			 let self = this;
  			 $('body').html( require('../admin/index.jade')({condominiums: data}) ); // load View
@@ -12,7 +14,7 @@ export default class Admin{
 			 }catch(e){
 				 console.warn(e)
 			 }
-			
+
 			 // Sort condominiums
 			 $('#condominiums-list').sortable({
 				 stop: function(event, ui) {
@@ -83,7 +85,7 @@ export default class Admin{
 		}
 	}
 
-	loadCondominium(event){
+	loadCondominium(event) {
 		let $target = $(event.target);
 		let form = document.getElementById('form-condominium');
 		$('[name=title]', form).val( $target.data('title') );
@@ -91,6 +93,7 @@ export default class Admin{
 		$('[name=facebook]', form).val( $target.data('facebook') );
 		$('[name=comments]', form).val( $target.data('comments') );
 		$('[name=codes]', form).val( $target.data('codes') );
+		$('[name=video_url]', form).val( $target.data('videourl') );
 		this.loadTags();
 	}
 }
